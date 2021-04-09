@@ -32,3 +32,7 @@ app.get("/insert/:name/:kode", (request, response) => {
     });
   });
 });
+
+https://www.w3schools.com/nodejs/nodejs_mongodb_find.asp
+
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
