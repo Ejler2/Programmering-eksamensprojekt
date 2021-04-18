@@ -3,7 +3,6 @@ var canvasH = 740;
 
 var radius = 170;
 
-var countDownStatus = false;
 
 
 
@@ -13,7 +12,7 @@ function setup() {
     frameRate(60);
 }
 
-
+var countDownStatus = false;
 var rotateHjul = true;
 var rotateBold = true;
 var hjulDegree = 0;
@@ -108,14 +107,18 @@ function draw() {
     rotateTheBold();
     circle(radius, radius, 15);
 
-    if(countDownStatus === true ) {
-        timeLeft -= 1/60;
-        console.log(timeLeft)
-        } else if (timeLeft <= 0 || countDownStatus === true) {
-            state = 1;
-            console.log("state 1")
-            countDownStatus = false;
-    }
+    
+    if (timeLeft <= 0 && countDownStatus === true) {
+        state = 1;
+        console.log("state 1");
+        countDownStatus = false;
+    }   else if(countDownStatus === true) {
+            console.log("===");
+            timeLeft -= 1/60;
+            console.log(timeLeft);
+        }
+
+
 
     hastighedModi()
 }
