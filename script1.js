@@ -18,31 +18,31 @@ var rotateBold = true;
 var hjulDegree = 0;
 var boldDegree = -3.6;
 var hjulSpeed = 1;
-var boldSpeed = -2;
+var boldSpeed = -10;
 
 var state = 0
 var vinkel = 0
 
 
 function rotateTheHjul() {
-    /*if (rotateHjul === true && hjulDegree >= 360 - hjulSpeed) {
+    if (rotateHjul === true && hjulDegree === 360-hjulSpeed) {
         hjulDegree = 0;
-    } else*/ if (rotateHjul === true){
+    } else if (rotateHjul === true){
         hjulDegree += hjulSpeed;
     }
     rotate(hjulDegree);
 }
 
-function rotateTheBold() {
-    /*if (rotateBold === true && boldDegree <= -360 + boldSpeed) {
+/*function rotateTheBold() {
+    if (rotateBold === true && boldDegree <= -360+boldSpeed) {
         boldDegree = 0;
-    } else*/ if (rotateBold === true) {
+    } else if (rotateBold === true) {
         boldDegree += boldSpeed;
     }
-    rotate(boldDegree);
-}
+    rotate(boldDegree); 
+}*/
 
-/*
+
 class kugle {
     constructor(x, y, diam, radius, color, radian, velocity) {
         this.x = x
@@ -56,16 +56,20 @@ class kugle {
 
     }
 
-    bevægelse() {
-        this.radian += this.velocity
-        this. x = x + Math.cos(this.radian) * this.radius
-
-
-
+    tegn() {
+        circle(this.x, this.y, this.diam);
     }
+
+    bevægelse() {
+        this.radian += this.velocity;
+        this. x = x + Math.cos(this.radian) * this.radius;
+    }
+
+
+
 }
-let KugleBord = new kugle(canvasW/2, canvasH/2, 10, 100, 'blue')
-*/
+var Kugle = new kugle(canvasW/2, canvasH/2, 10, 100, 'blue')
+
 
 function startGame() {
     console.log("Spillet starter")
@@ -83,49 +87,35 @@ function countdown(input) {
 
 function hastighedModi() {
     if (state === 0){
-        boldSpeed = -2;
+        boldSpeed = -10;
     }   else if (state === 1){
             boldSpeed += 0.05;
-            if (boldSpeed >= 1){
+            if (boldSpeed >= 0){
                 state = 2
             }
     }   else if (state === 2){
-        state = 3;
-        boldSpeed = 1;
-        vinkel = (-1 * ((hjulDegree % 360) - (-1*boldDegree) % 360));
-
-        if (vinkel < 0) {
-            vinkel = vinkel * (-1)
-        }
-
-        console.log(vinkel);
-        console.log(hjulDegree % 360)
-        console.log(boldDegree % 360)
-        Givresultat(vinkel);
+        boldSpeed = 0;
+        state = 3
+        vinkel = hjulSpeed-boldDegree
+        Givresultat(vinkel)
     }
 }
 
 
 function draw() {
-    //console.log("hjul" + hjulDegree)
-    //console.log("bold" + boldDegree)
-
-    //console.log(hjulDegree + (-1*boldDegree));
     background(240);
+    Kugle.tegn();
+
     angleMode(DEGREES);
     translate(canvasW / 2, canvasH / 2);
-    push()
+    //
     rotateTheHjul();
     imageMode(CENTER);
-    image(rouletteBil, 0, 0, 500, 500);
-    line(0, 0, 600, 600)
-    pop()
+    //image(rouletteBil, 0, 0, 500, 500);
+
     //angleMode(0);
     //translate(0,0);
-    rotateTheBold();
-    circle(radius, radius, 15);
-    //line(canvasW / 2, canvasH / 2, (canvasW / 2) + 50, (canvasH / 2) + 50)
-    line(0, 0, 600, 600)
+    //rotateTheBold();
 
     
     if (timeLeft <= 0 && countDownStatus === true) {
