@@ -156,4 +156,3 @@ function Givresultat (vinkel) {
         console.log("Der er sket en fejl!")
     }
 }
-
