@@ -1,9 +1,10 @@
-let url = "http://localhost:3001";
+let url = "mongodb://localhost:27017/";
 
 function insert() {
-  fetch(url + "/insert/" + prompt("Name") + "/" + prompt("kode"))
+  fetch(url + "/insert/" + prompt("name") + "/" + prompt("code"))
   .then(response => response.json())
   .then(data => alert("ny bruger" + JSON.stringify(data)));
+  console.log("name" + " " + "code");
 }
 
 function findAll() {

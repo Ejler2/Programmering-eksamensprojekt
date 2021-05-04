@@ -7,7 +7,7 @@ var url = "mongodb://localhost:27017/";
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("mydb");
-  dbo.collection("brugere").findOne({}, function(err, result) {
+  dbo.collection("users").findOne({}, function(err, result) {
     if (err) throw err;
     console.log(result);
     db.close();
@@ -15,14 +15,14 @@ MongoClient.connect(url, function(err, db) {
 });
 
 // insert new highscore
-app.get("/insert/:name/:kode", (request, response) => {
+app.get("/insert/:name/:code", (request, response) => {
 	console.log("Ny bruger: " + request.params.name + ", " + request.params.kode);
 
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
     var myobj = { name: request.params.name, kode: request.params.kode};
-    dbo.collection("brugere").insertOne(myobj, function(err, res) {
+    dbo.collection("users").insertOne(myobj, function(err, res) {
       if (err) throw err;
 
       console.log("Inserted: " + JSON.stringify(myobj))
@@ -33,6 +33,8 @@ app.get("/insert/:name/:kode", (request, response) => {
   });
 });
 
+/*
 https://www.w3schools.com/nodejs/nodejs_mongodb_find.asp
 
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
+*/
