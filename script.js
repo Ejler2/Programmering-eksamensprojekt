@@ -3,9 +3,6 @@ var canvasH = 740;
 
 var radius = 170;
 
-
-
-
 function setup() {
     rouletteBil = loadImage('Roulettehjul.png');
     createCanvas(canvasW, canvasH);
@@ -16,30 +13,28 @@ var countDownStatus = false;
 var rotateHjul = true;
 var rotateBold = true;
 var hjulDegree = 0;
-var boldDegree = -3.6;
+var boldDegree = 0;
 var hjulSpeed = 1;
 var boldSpeed = -2;
-
 var state = 0
 var vinkel = 0
 
-
 function rotateTheHjul() {
-    /*if (rotateHjul === true && hjulDegree >= 360 - hjulSpeed) {
+    rotate(hjulDegree);
+    if (rotateHjul === true && hjulDegree >= 360) {
         hjulDegree = 0;
-    } else*/ if (rotateHjul === true){
+    } else if (rotateHjul === true){
         hjulDegree += hjulSpeed;
     }
-    rotate(hjulDegree);
 }
 
 function rotateTheBold() {
-    /*if (rotateBold === true && boldDegree <= -360 + boldSpeed) {
+    rotate(boldDegree);
+    if (rotateBold === true && boldDegree <= -360) {
         boldDegree = 0;
-    } else*/ if (rotateBold === true) {
+    } else if (rotateBold === true) {
         boldDegree += boldSpeed;
     }
-    rotate(boldDegree);
 }
 
 /*
@@ -74,7 +69,6 @@ function startGame() {
 }
 
 var timeLeft = 0;
-
 function countdown(input) {
     console.log("Countdown igangsat")
     countDownStatus = true;
@@ -83,7 +77,7 @@ function countdown(input) {
 
 function hastighedModi() {
     if (state === 0){
-        boldSpeed = -2;
+        boldSpeed = -1;
     }   else if (state === 1){
             boldSpeed += 0.05;
             if (boldSpeed >= 1){
@@ -92,21 +86,31 @@ function hastighedModi() {
     }   else if (state === 2){
         state = 3;
         boldSpeed = 1;
-        vinkel = (-1 * ((hjulDegree % 360) - (-1*boldDegree) % 360));
+        vinkel = (hjulDegree - boldDegreeFR);
 
         if (vinkel < 0) {
             vinkel = vinkel * (-1)
         }
 
         console.log(vinkel);
-        console.log(hjulDegree % 360)
-        console.log(boldDegree % 360)
+        console.log(hjulDegree)
+        console.log(boldDegreeFR)
+        console.log(boldDegree)
         Givresultat(vinkel);
     }
 }
 
 
 function draw() {
+    if (boldDegree > 0) {
+        360 - boldDegree
+    } else {
+        boldDegreeFR = 360 + boldDegree
+    }
+    if (boldDegreeFR === 360) {
+        boldDegreeFR = 0
+    }
+
     //console.log("hjul" + hjulDegree)
     //console.log("bold" + boldDegree)
 
@@ -120,11 +124,8 @@ function draw() {
     image(rouletteBil, 0, 0, 500, 500);
     line(0, 0, 600, 600)
     pop()
-    //angleMode(0);
-    //translate(0,0);
     rotateTheBold();
     circle(radius, radius, 15);
-    //line(canvasW / 2, canvasH / 2, (canvasW / 2) + 50, (canvasH / 2) + 50)
     line(0, 0, 600, 600)
 
     
@@ -132,6 +133,7 @@ function draw() {
         state = 1;
         console.log("state 1");
         countDownStatus = false;
+        timeLeft = 0
     }   else if(countDownStatus === true) {
             timeLeft -= 1/60;
             console.log(timeLeft);
