@@ -14,14 +14,14 @@ MongoClient.connect(url, function(err, db) {
   });
 });
 
-// insert new highscore
+// Oprettelse af ny bruger
 app.get("/insert/:name/:code", (request, response) => {
-	console.log("Ny bruger: " + request.params.name + ", " + request.params.kode);
-
+	console.log("Ny bruger: " + request.params.name + ", " + request.params.code);
+  
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
-    var myobj = { name: request.params.name, kode: request.params.kode};
+    var myobj = { name: request.params.name, code: request.params.code, bank: '100'};
     dbo.collection("users").insertOne(myobj, function(err, res) {
       if (err) throw err;
 
@@ -32,6 +32,27 @@ app.get("/insert/:name/:code", (request, response) => {
     });
   });
 });
+
+// Hvor meget har man i banken
+app.get("/Seebank/:name", (request, response) => {
+	console.log("balance for bruger: " + request.params.name);
+  
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    var myobj = { name: request.params.name, code: request.params.code, bank: '100'};
+    dbo.collection("users").insertOne(myobj, function(err, res) {
+      if (err) throw err;
+
+      console.log("Inserted: " + JSON.stringify(myobj))
+      response.header("Access-Control-Allow-Origin", "*");
+      response.json(myobj);
+      db.close();
+    });
+  });
+});
+
+
 
 /*
 https://www.w3schools.com/nodejs/nodejs_mongodb_find.asp
