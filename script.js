@@ -1,5 +1,5 @@
-var canvasW = 1600;
-var canvasH = 740;
+var canvasW = 510;
+var canvasH = 700;
 var radius = 170;
 
 var countDownStatus = false;
@@ -91,7 +91,7 @@ function setup() {
 }
 
 function draw() {
-    background(240);
+//  background(2);
     angleMode(DEGREES);
     translate(canvasW / 2, canvasH / 2);
     push()
