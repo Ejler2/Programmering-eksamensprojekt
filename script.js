@@ -9,6 +9,7 @@ var hjulDegree = 0;
 var boldDegree = 0;
 var hjulSpeed = 1;
 var boldSpeed = -10;
+var boldDegreeFR = 0;
 var state = 0;
 var vinkel = 0;
 var timeLeft = 0;
@@ -50,37 +51,37 @@ function countdown(input) {
 function hastighedModi() {
     if (state === 0){
         boldSpeed = -10;
-    }   else if (state === 1){
-            boldSpeed += 0.05;
-            if (boldSpeed >= 1){
-                state = 2
-            }
-        }   else if (state === 2){
-                state = 3;
-                boldSpeed = 1;
+    } else if (state === 1){
+        boldSpeed += 0.05;
+        if (boldSpeed >= 1){
+            state = 2
+        }
+    } else if (state === 2){
+        state = 3;
+        boldSpeed = 1;
+        if (boldDegree > 0) {
+            360 - boldDegree
+        } else {
+            boldDegreeFR = 360 + boldDegree
+        }
 
-                if (boldDegree > 0) {
-                    360 - boldDegree
-                } else {
-                    boldDegreeFR = 360 + boldDegree
-                }
+        if (boldDegreeFR === 360) {
+            boldDegreeFR = 0
+        }
 
-                if (boldDegreeFR === 360) {
-                    boldDegreeFR = 0
-                }
+        vinkel = (hjulDegree - boldDegreeFR);
 
-                vinkel = (hjulDegree - boldDegreeFR);
+        if (vinkel < 0) {
+            vinkel = vinkel * (-1)
+        }
 
-                if (vinkel < 0) {
-                    vinkel = vinkel * (-1)
-                }
-
-                console.log(vinkel);
-                console.log(hjulDegree)
-                console.log(boldDegreeFR)
-                console.log(boldDegree)
-                Givresultat(vinkel);
-            }
+        console.log(vinkel);
+        console.log(hjulDegree)
+        console.log(boldDegreeFR)
+        console.log(boldDegree)
+        Givresultat(vinkel);
+        Casinoresultet(bet);
+    }
 }
 
 function setup() {
@@ -109,8 +110,8 @@ function draw() {
         console.log("state 1");
         countDownStatus = false;
         timeLeft = 0
-    }   else if(countDownStatus === true) {
-            timeLeft -= 1/60;
-            console.log(timeLeft);
-        }
+    } else if(countDownStatus === true) {
+        timeLeft -= 1/60;
+        console.log(timeLeft);
+    }
 }

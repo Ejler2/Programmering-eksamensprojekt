@@ -2,6 +2,57 @@ var resultatNr = 0;
 var resultatFarve = "ingen";
 var forsøgNr = 1;
 
+var bank = 100;
+var betNr = 0;
+var betFarve = "sort";
+var betValue = 0;
+
+var betValueInput = 0
+var betNrInput = 0
+var betFarveInput = ""
+var bet = 0
+
+
+function placeBet(){
+    betValueInput = 50;
+    betNrInput = null;
+    betFarveInput = "rød";
+    Bet();
+
+    console.log("Kør")
+}
+
+function Bet() {
+    if (betValueInput > bank) {
+        return("Ikke nok penge til dette sats")
+    } else if (betValueInput <= bank) {
+        betValue = betValueInput
+        betNr = betNrInput;
+        betFarve = betFarveInput;
+
+        bet = betValue
+        bank -= bet;
+    } else {
+        return("Fejl")
+    }
+}
+
+function Casinoresultet(bet){
+    if (betFarve === resultatFarve && betFarve === "grøn") {
+        bet *= 100
+    } else if (betNr === resultatNr){
+        bet *= 35;
+    } else if (betFarve === resultatFarve){
+        bet *= 2;
+    } else {
+        bet = 0;
+    }
+    bank += bet;
+
+    resultatFarve = "ingen";
+    resultatNr = null;
+    console.log(bank)
+}
 
 function Givresultat (vinkel) {
     if (-3.6 < vinkel && vinkel < -3.6 + 360/37) {
