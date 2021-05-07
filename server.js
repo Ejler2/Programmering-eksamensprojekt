@@ -48,7 +48,7 @@ app.get("/Sebank", (request, response) => {
 
 // Login
 app.get("/Login/:name/:code", (request, response) => {
-	console.log("balance for bruger: " + request.params.name);
+	console.log("find bruger: " + request.params.name);
   
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
