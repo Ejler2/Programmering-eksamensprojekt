@@ -4,7 +4,7 @@ function insert() {
   fetch(url + "/insert/" + prompt("name") + "/" + prompt("code"))
   .then(response => response.json())
   .then(data => alert("ny bruger" + JSON.stringify(data)));
-  console.log("name" + " " + "code");
+  console.log(prompt("name") + " " + prompt("code"));
 }
 
 function findAll() {
