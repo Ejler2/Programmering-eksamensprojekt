@@ -109,8 +109,8 @@ function Casinoresultet(bet){
     resultatFarve = "ingen";
     resultatNr = null;
     console.log(bank)
-    bank = Bankupdate;
-    update();
+    //bank = Bankupdate;
+    //update();
 }
 
 
