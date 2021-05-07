@@ -118,7 +118,7 @@ function hastighedModi() {
     if (state === 0){
         boldSpeed = -10;
     } else if (state === 1){
-        boldSpeed += 0.05;
+        boldSpeed += (Math.random() + 0.2) * 0.05;
         if (boldSpeed >= 1){
             state = 2
         }
