@@ -1,4 +1,4 @@
-var canvasW = 510;
+var canvasW = 700;
 var canvasH = 700;
 var radius = 170;
 
@@ -80,7 +80,6 @@ function Bet() {
     } else if (betValue > bank) {
         console.log("Ikke nok penge til dette sats")
     } else if (betValue <= bank) {
-        betValue = betValueInput
         betNr = betNrInput;
         betFarve = betFarveInput;
 
@@ -175,12 +174,17 @@ function setup() {
 var resetCounterActive = true;
 var resetCounter = 0;
 function draw() {
-    background(255);
+    background(0, 100, 0);
 
     textSize(20);
     textAlign(LEFT, LEFT);
+    stroke(255);
+    strokeWeight(1.2)
+    textFont('Helvetica');
+
+    
     text("Bank: " + bank + " kr.", 10, 650);
-    text("Tid til næste spil: " + (20 - floor(resetCounter)) + " sekunder", 235, 650);
+    text("Tid til næste spil: " + (20 - floor(resetCounter)) + " sekunder", 400, 650);
     textAlign(CENTER, CENTER);
     text("Du er ved at satse " + betValueInput + " kr.", canvasW/2, 20);
     text("Der er på nuværende tidspunkt satset:", canvasW/2, 45);
