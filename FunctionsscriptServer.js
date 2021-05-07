@@ -1,7 +1,7 @@
 let url = "mongodb://localhost:27017/";
 
-GetUser = Userlogin;
-Bankupdate = 0;
+var GetUser = Userlogin;
+var Bankupdate = 0;
 
 //ny bruger
 function insert() {
