@@ -48,6 +48,18 @@ function countdown(input) {
     timeLeft = input;
 }
 
+function checkCountdown() {
+    if (timeLeft <= 0 && countDownStatus === true) {
+        state = 1;
+        console.log("state 1");
+        countDownStatus = false;
+        timeLeft = 0
+    } else if(countDownStatus === true) {
+        timeLeft -= 1/60;
+        console.log(timeLeft);
+    }
+}
+
 function hastighedModi() {
     if (state === 0){
         boldSpeed = -10;
@@ -81,6 +93,8 @@ function hastighedModi() {
         console.log(boldDegree)
         Givresultat(vinkel);
         Casinoresultet(bet);
+        resetGame();
+        bet = 0;
     }
 }
 
@@ -90,10 +104,35 @@ function setup() {
     frameRate(60);
 }
 
+
+var resetCounter = 0
 function draw() {
-//  background(2);
+    background(255);
+
+    textSize(20);
+    textAlign(LEFT, LEFT);
+    text("Bank: " + bank + " kr.", 10, 650);
+
+
+    text("Tid til næste spil: " + (20 - floor(resetCounter)) + " sekunder", 235, 650);
+
+    textAlign(CENTER, CENTER);
+    text(betValueInput, canvasW/2, 20);
+    text("Der er på nuværende tidspunkt satset:", canvasW/2, 40);
+    textSize(30);
+    text(bet + " kr.", canvasW/2, 80);
+    nummerEllerFarve();
+    textSize(20);
+    text("på " + nEllerF, canvasW/2, 105)
+
+    resetCounter += 1/60;
+    if (resetCounter > 20){
+        startGame();
+        resetCounter = 0;
+    }
+
     angleMode(DEGREES);
-    translate(canvasW / 2, canvasH / 2);
+    translate(canvasW / 2, canvasH / 2 + 20);
     push()
     rotateTheHjul();
     imageMode(CENTER);
@@ -104,14 +143,5 @@ function draw() {
     circle(radius, radius, 15);
     //line(0, 0, 600, 600)
     hastighedModi();
-
-    if (timeLeft <= 0 && countDownStatus === true) {
-        state = 1;
-        console.log("state 1");
-        countDownStatus = false;
-        timeLeft = 0
-    } else if(countDownStatus === true) {
-        timeLeft -= 1/60;
-        console.log(timeLeft);
-    }
+    checkCountdown()
 }
