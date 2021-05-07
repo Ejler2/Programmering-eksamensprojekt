@@ -134,7 +134,7 @@ app.get("/del/:name/:code", (request, response) => {
   });
 });
 
-const port = 3001;
+const port = 5500;
 app.listen(port, () => console.log("Listening on port " + port));
 
 /*

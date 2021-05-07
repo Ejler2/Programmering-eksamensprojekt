@@ -1,6 +1,6 @@
 let url = "mongodb://localhost:27017/";
 
-GetUser = Userlog;
+GetUser = Userlogin;
 Bankupdate = 0;
 
 //ny bruger
@@ -45,4 +45,3 @@ function Bankinfo() {
   .then(response => response.json())
   .then(data => alert("bank: " + JSON.stringify(data)));
 }
-
