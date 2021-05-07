@@ -56,7 +56,6 @@ function checkCountdown() {
         timeLeft = 0
     } else if(countDownStatus === true) {
         timeLeft -= 1/60;
-        console.log(timeLeft);
         resetCounter = 0;
     }
 }
