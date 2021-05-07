@@ -5,20 +5,16 @@
     <title>Login Page</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <button onclick="insert()">Ny bruger</button>
+
+    <button onclick="List()">Click me</button>
+
 </head>
 
 <body>
     <div id="frm">
-        <form action="process.php" method="POST">
-            <p>
-                <label>Username:</label>
-                <input type="text" id="user" name="user"    />
-            </p>
-            <p>
-                <label>Password:</label>
-                <input type="password" id="pass" name="pass"    />
-            </p>
-            <p>
-                <input type="submit" id="knap" value="Login"    />
-            </p>
+        <button onclick="insert()">Ny bruger</button>
+        <button onclick="Login()">Log in med bruger</button>
+        <button onclick="findAll()">Find alle brugere</button>
+        <button onclick="Fjern()">Fjern bruger</button>
+        <button onclick="Bankinfo()">Se bankinfo</button>
 </html>
