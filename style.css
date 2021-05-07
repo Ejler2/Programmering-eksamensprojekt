@@ -1,0 +1,48 @@
+.container{
+    height: 300px;
+    position: sticky;
+}
+
+.raekke1{
+    margin: 0;
+    position: absolute;
+    left: 3%;
+    top: 10%;
+    transform: translateY(-50%)
+}
+
+.raekke2{
+    margin: 0;
+    position: absolute;
+    left: 0.7%;
+    top: 25%;
+    transform: translateY(-50%)
+}
+
+.raekke3{
+    margin: 0;
+    position: absolute;
+    left: 3%;
+    top: 40%;
+    transform: translateY(-50%)
+}
+
+.raekke4{
+    margin: 0;
+    position: absolute;
+    left: 14.7%;
+    top: 60%;
+    transform: translateY(-50%)
+}
+
+.raekke5{
+    margin: 0;
+    position: absolute;
+    left: 6.2%;
+    top: 80%;
+    transform: translateY(-50%)
+}
+
+.background{
+    background-color: darkgreen;
+}
