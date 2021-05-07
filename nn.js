@@ -1,6 +1,5 @@
 var resultatNr = 0;
 var resultatFarve = "ingen";
-var forsøgNr = 1;
 
 var bank = 100;
 var betNr = 0;
@@ -33,8 +32,8 @@ function stakesPurple() {
 
 function bet0() {
     betValue = betValueInput;
-    betNrInput = 1;
-    betFarveInput = ""
+    betNrInput = null;
+    betFarveInput = "grøn"
     Bet();
     betValueInput = 0
 }
@@ -286,14 +285,14 @@ function bet35() {
 function betRod() {
     betValue = betValueInput;
     betNrInput = null;
-    betFarveInput = "Rød"
+    betFarveInput = "rød"
     Bet();
     betValueInput = 0
 }
 function betSort() {
     betValue = betValueInput;
     betNrInput = null;
-    betFarveInput = "Sort"
+    betFarveInput = "sort"
     Bet();
     betValueInput = 0
 }
@@ -303,7 +302,7 @@ function Bet() {
     if (bet > 0) {
         console.log("Der er Allerede lavet et bet")
     } else if (betValue > bank) {
-        return("Ikke nok penge til dette sats")
+        console.log("Ikke nok penge til dette sats")
     } else if (betValue <= bank) {
         betValue = betValueInput
         betNr = betNrInput;
@@ -312,19 +311,23 @@ function Bet() {
         bet = betValue
         bank -= bet;
     } else {
-        return("Fejl")
+        console.log("Fejl")
     }
 }
 
 function Casinoresultet(bet){
     if (betFarve === resultatFarve && betFarve === "grøn") {
         bet *= 35
+        console.log("1")
     } else if (betNr === resultatNr){
         bet *= 35;
+        console.log("2")
     } else if (betFarve === resultatFarve){
         bet *= 2;
+        console.log("3")
     } else {
         bet = 0;
+        console.log("4")
     }
     bank += bet;
 

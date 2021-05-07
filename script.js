@@ -112,10 +112,7 @@ function draw() {
     textSize(20);
     textAlign(LEFT, LEFT);
     text("Bank: " + bank + " kr.", 10, 650);
-
-
     text("Tid til næste spil: " + (20 - floor(resetCounter)) + " sekunder", 235, 650);
-
     textAlign(CENTER, CENTER);
     text(betValueInput, canvasW/2, 20);
     text("Der er på nuværende tidspunkt satset:", canvasW/2, 40);
