@@ -16,6 +16,7 @@ function Login() {
   fetch(url + "/insert/" + prompt("name") + "/" + prompt("code"))
   .then(response => response.json())
   .then(data => alert(JSON.stringify(data)));
+  window.location.href = "Casino.html";
 }
 
 //Finder alle brugere (Admin ting)
