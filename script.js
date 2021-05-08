@@ -82,7 +82,6 @@ function Bet() {
     } else if (betValue <= bank) {
         betNr = betNrInput;
         betFarve = betFarveInput;
-
         bet = betValue
         bank -= bet;
     } else {
@@ -182,7 +181,7 @@ function draw() {
     strokeWeight(1.2)
     textFont('Helvetica');
 
-    
+
     text("Bank: " + bank + " kr.", 10, 650);
     text("Tid til næste spil: " + (20 - floor(resetCounter)) + " sekunder", 400, 650);
     textAlign(CENTER, CENTER);

@@ -1,24 +1,24 @@
 function resetInput() {
-    betValueInput = 0
+    betValueInput = 0;
 }
 
 function stakesRed() {
-    betValueInput += 10
+    betValueInput += 10;
 }
 function stakesBlue() {
-    betValueInput += 25
+    betValueInput += 25;
 }
 function stakesGreen() {
-    betValueInput += 50
+    betValueInput += 50;
 }
 function stakesYellow() {
-    betValueInput += 100
+    betValueInput += 100;
 }
 function stakesBlack() {
-    betValueInput += 200
+    betValueInput += 200;
 }
 function stakesPurple() {
-    betValueInput += 500
+    betValueInput += 500;
 }
 
 function bet0() {
@@ -30,7 +30,7 @@ function bet0() {
 }
 function bet1() {
     betValue = betValueInput;
-    betNrInput = 1;
+    betNrInput = 1; //for et sats på nr. 1
     betFarveInput = ""
     Bet();
     betValueInput = 0
@@ -276,7 +276,7 @@ function bet35() {
 function betRod() {
     betValue = betValueInput;
     betNrInput = null;
-    betFarveInput = "rød"
+    betFarveInput = "rød" //for et sats på farven rød
     Bet();
     betValueInput = 0
 }
