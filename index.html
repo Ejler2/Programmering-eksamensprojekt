@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<script src="fetchexample.js"></script>
+<script src="FunctionsscriptServer.js"></script>
+
 <html>
 <head>
-    <title>Login Page</title>
+    <title>LH Casino</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <button onclick="insert()">Ny bruger</button>
 </head>
 
 <body>
     <div id="frm">
-        <form action="process.php" method="POST">
-            <p>
-                <label>Username:</label>
-                <input type="text" id="user" name="user"    />
-            </p>
-            <p>
-                <label>Password:</label>
-                <input type="password" id="pass" name="pass"    />
-            </p>
-            <p>
-                <input type="submit" id="knap" value="Login"    />
-            </p>
+        <h1>LH Casino</h1>
+        <p>For at komme til casino, benyt knappen 'Log ind med bruger'</p>
+
+        <button onclick="insert()">Ny bruger</button>
+        <p></p>
+        <button onclick="Login()">Log ind med bruger</button>
+        <p></p>
+        <button onclick="findAll()">Find alle brugere</button>
+        <p></p>
+        <button onclick="Fjern()">Fjern bruger</button>
+        <p></p>
+        <button onclick="Bankinfo()">Se bankinfo</button>
 </html>
